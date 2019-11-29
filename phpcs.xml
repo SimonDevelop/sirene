@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Sirene">
+  <description>Rules</description>
+  <arg name="colors"/>
+  <arg value="p"/>
+
+  <file>src</file>
+  <file>tests</file>
+
+  <rule ref="PSR2"></rule>
+  <rule ref="Generic.Arrays.DisallowLongArraySyntax"></rule>
+</ruleset>

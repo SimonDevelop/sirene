@@ -1,0 +1,51 @@
+{
+    "name": "simondevelop/sirene",
+    "description": "Librairie facilitant l'utilisation de l'API sirene de l'insée",
+    "type": "library",
+    "keywords": [
+        "sirene",
+        "insee",
+        "siret",
+        "siren",
+        "api"
+    ],
+    "homepage": "https://github.com/SimonDevelop/sirene",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SimonDevelop",
+            "email": "contact@simon-micheneau.fr"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "SimonDevelop\\": "src/",
+            "SimonDevelop\\Test\\": "tests/"
+        }
+    },
+    "require": {
+        "ext-json": "*",
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.1",
+        "phpunit/phpunit": "^7.5.17",
+        "phpstan/phpstan": "^0.11.19"
+    },
+    "scripts": {
+    "phpcs": "phpcs -s",
+    "phpstan-src": "phpstan analyse -l 5 src",
+    "phpstan-tests": "phpstan analyse -l 5 tests",
+    "phpstan": [
+        "@phpstan-src",
+        "@phpstan-tests"
+    ],
+    "phpunit": "phpunit --colors",
+    "test": [
+        "@phpunit",
+        "@phpcs",
+        "@phpstan"
+    ]
+  }
+}
