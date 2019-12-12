@@ -19,7 +19,7 @@ Librairie facilitant l'utilisation de l'API sirene de l'insée.
   - [ ] Prénom
 
 
-Check this [docs](https://github.com/SimonDevelop/sirene/blob/master/docs/introduction.md) for more.
+La [documentation](https://simondevelop.github.io/sirene/) est encore en cours de rédaction.
 
 #### Go to contribute !
 - Check the [Code of Conduct](https://github.com/SimonDevelop/sirene/blob/master/.github/CODE_OF_CONDUCT.md)
