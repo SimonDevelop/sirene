@@ -30,9 +30,9 @@ class SireneTest extends TestCase
         }
         $this->assertEquals(true, $testException);
 
-        // Good and with options
+        // Good and with options (Secret token for tests only)
         $settings = [
-            "secret" => "test",
+            "secret" => "SG54YWo0eEtoM3dlWThVSXNINUtUNzZZaG5JYTpvSWx5akk3OVdqU21nQUNZSjRsT3hVeE5mYmth",
             "jwt_path" => dirname(__DIR__),
         ];
         $Sirene = new Sirene($settings);
@@ -46,14 +46,14 @@ class SireneTest extends TestCase
      */
     public function testSiret($Sirene)
     {
-        $result = $Sirene->siret("test");
-        $this->assertEquals($result, [
-            "header" => [
-                "statut" => 200,
-                "message" => "OK"
-            ],
-            "etablissement" => []
+        // Siret of airbus
+        $result = $Sirene->siret("38347481400100");
+        $this->assertEquals($result["header"], [
+            "statut" => 200,
+            "message" => "ok"
         ]);
+        $this->assertEquals(is_array($result["etablissement"]), true);
+        $this->assertEquals(!empty($result["etablissement"]), true);
     }
 
     /**
@@ -62,13 +62,13 @@ class SireneTest extends TestCase
      */
     public function testSiren($Sirene)
     {
-        $result = $Sirene->siren("test");
-        $this->assertEquals($result, [
-            "header" => [
-                "statut" => 200,
-                "message" => "OK"
-            ],
-            "uniteLegale" => []
+        // Siren of airbus
+        $result = $Sirene->siren("383474814");
+        $this->assertEquals($result["header"], [
+            "statut" => 200,
+            "message" => "OK"
         ]);
+        $this->assertEquals(is_array($result["uniteLegale"]), true);
+        $this->assertEquals(!empty($result["uniteLegale"]), true);
     }
 }

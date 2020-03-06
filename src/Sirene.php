@@ -82,31 +82,22 @@ class Sirene
      */
     private function getJWT()
     {
-        if ($this->secretKey === "test") {
-            return [
-                "access_token" => "2b71fa29-3988-3955-94cb-a0bdaf3e0c86",
-                "scope" => "am_application_scope default",
-                "token_type" => "Bearer",
-                "expires_in" => 604800
-            ];
-        } else {
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $this->urlJWT);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
-            $headers = [
-                "Authorization: Basic ".$this->secretKey,
-                "Content-Type: application/x-www-form-urlencoded"
-            ];
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            $result = curl_exec($ch);
-            if (curl_errno($ch)) {
-                return false;
-            }
-            curl_close($ch);
-            return json_decode($result, true);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->urlJWT);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
+        $headers = [
+            "Authorization: Basic ".$this->secretKey,
+            "Content-Type: application/x-www-form-urlencoded"
+        ];
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            return false;
         }
+        curl_close($ch);
+        return json_decode($result, true);
     }
 
     /**
@@ -152,30 +143,20 @@ class Sirene
     {
         $JWT = $this->getJWTSirene();
         if (is_string($JWT)) {
-            if ($this->secretKey === "test") {
-                return [
-                    "header" => [
-                        "statut" => 200,
-                        "message" => "OK"
-                    ],
-                    "etablissement" => []
-                ];
-            } else {
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/".$siret);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                $headers = [
-                    "Accept: application/json",
-                    "Authorization: Bearer ".$JWT
-                ];
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                $result = curl_exec($ch);
-                if (curl_errno($ch)) {
-                    return false;
-                }
-                curl_close($ch);
-                return json_decode($result, true);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/".$siret);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $headers = [
+                "Accept: application/json",
+                "Authorization: Bearer ".$JWT
+            ];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                return false;
             }
+            curl_close($ch);
+            return json_decode($result, true);
         } else {
             return $JWT;
         }
@@ -189,30 +170,20 @@ class Sirene
     {
         $JWT = $this->getJWTSirene();
         if (is_string($JWT)) {
-            if ($this->secretKey === "test") {
-                return [
-                    "header" => [
-                        "statut" => 200,
-                        "message" => "OK"
-                    ],
-                    "uniteLegale" => []
-                ];
-            } else {
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siren/".$siren);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                $headers = [
-                    "Accept: application/json",
-                    "Authorization: Bearer ".$JWT
-                ];
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                $result = curl_exec($ch);
-                if (curl_errno($ch)) {
-                    return false;
-                }
-                curl_close($ch);
-                return json_decode($result, true);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siren/".$siren);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $headers = [
+                "Accept: application/json",
+                "Authorization: Bearer ".$JWT
+            ];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                return false;
             }
+            curl_close($ch);
+            return json_decode($result, true);
         } else {
             return $JWT;
         }
