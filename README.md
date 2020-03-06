@@ -4,8 +4,8 @@
 [![Github Actions PHP](https://github.com/SimonDevelop/sirene/workflows/PHP/badge.svg)](https://github.com/SimonDevelop/sirene/actions)
 [![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/SimonDevelop/sirene/blob/master/LICENSE)
 
-# sirene
-Librairie facilitant l'utilisation de l'API sirene de l'insée.
+# Sirene
+Sirene est une librairie php vous permettant d'utiliser l'[API Sirene](https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=Sirene&version=V3&provider=insee) de l'insée via des fonctions pour facilité la recherche d'etablissement.
 
 ## TODO
 - [x] Recherche par siren
@@ -19,7 +19,7 @@ Librairie facilitant l'utilisation de l'API sirene de l'insée.
   - [ ] Prénom
 
 
-La [documentation](https://simondevelop.github.io/sirene/) est encore en cours de rédaction.
+La [documentation](https://simondevelop.github.io/sirene/docs/) est encore en cours de rédaction.
 
 #### Go to contribute !
 - Check the [Code of Conduct](https://github.com/SimonDevelop/sirene/blob/master/.github/CODE_OF_CONDUCT.md)
