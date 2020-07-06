@@ -188,4 +188,47 @@ class Sirene
             return $JWT;
         }
     }
+
+    /**
+     * @param array $params Parameters of search
+     * @return array|bool
+     */
+    public function searchEtablissement(array $params)
+    {
+        $list = [
+            "city" => "libelleCommuneEtablissement",
+            "cp" => "codePostalEtablissement",
+            "company" => "denominationUniteLegale",
+            "sigle" => "sigleUniteLegale",
+            "ape" => "activitePrincipaleUniteLegale",
+            "cj" => "categorieJuridiqueUniteLegale"
+        ];
+        $data = "";
+        $JWT = $this->getJWTSirene();
+        if (is_string($JWT) && !empty($params)) {
+            foreach ($params as $k => $v) {
+                if (array_key_exists($k, $list)) {
+                    $data .= $list[$k].":".$v." AND ";
+                    unset($params[$k]);
+                }
+            }
+            $data = urlencode(substr($data, 0, -5));
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/?q=".$data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $headers = [
+                "Accept: application/json",
+                "Authorization: Bearer ".$JWT
+            ];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                return false;
+            }
+            curl_close($ch);
+            return json_decode($result, true);
+        } else {
+            return $JWT;
+        }
+    }
 }
