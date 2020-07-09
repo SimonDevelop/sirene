@@ -1,22 +1,23 @@
-[![version](https://img.shields.io/badge/Version-0.0.1-brightgreen.svg)](https://github.com/SimonDevelop/sirene/releases/tag/0.0.1)
+[![version](https://img.shields.io/badge/Version-0.0.2-brightgreen.svg)](https://github.com/SimonDevelop/sirene/releases/tag/0.0.2)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 [![Build Status](https://travis-ci.org/SimonDevelop/sirene.svg?branch=master)](https://travis-ci.org/SimonDevelop/sirene)
 [![Github Actions PHP](https://github.com/SimonDevelop/sirene/workflows/PHP/badge.svg)](https://github.com/SimonDevelop/sirene/actions)
 [![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/SimonDevelop/sirene/blob/master/LICENSE)
 
 # Sirene
-Sirene est une librairie php vous permettant d'utiliser l'[API Sirene](https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=Sirene&version=V3&provider=insee) de l'insée via des fonctions pour facilité la recherche d'etablissement.
+Sirene est une librairie php vous permettant d'utiliser l'[API Sirene](https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=Sirene&version=V3&provider=insee) de l'insée via des fonctions pour facilité la recherche d'établissement.
 
 ## TODO
 - [x] Recherche par siren
 - [x] Recherche par siret
 - [ ] Système de pagination
-- [ ] Recherche avec plusieurs paramètres
-  - [ ] Ville
-  - [ ] CP
-  - [ ] Raison sociale
-  - [ ] Nom
-  - [ ] Prénom
+- [x] Recherche d'établissement via paramètres
+  - [x] Ville
+  - [x] Code Postal
+  - [x] Raison sociale
+  - [x] Sigle
+  - [x] Code APE
+  - [x] Catégorie Juridique
 
 
 La [documentation](https://simondevelop.github.io/sirene/) est encore en cours de rédaction.
