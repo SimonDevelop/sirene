@@ -71,4 +71,24 @@ class SireneTest extends TestCase
         $this->assertEquals(is_array($result["uniteLegale"]), true);
         $this->assertEquals(!empty($result["uniteLegale"]), true);
     }
+
+    /**
+     * searchEtablissement function test
+     * @depends testInitConstructor
+     */
+    public function testSearchEtablissement($Sirene)
+    {
+        // Siren of airbus
+        $result = $Sirene->searchEtablissement([
+            "city" => "BLAGNAC",
+            "cp" => "31700",
+            "company" => "AIRBUS",
+            "ape" => "30.30Z",
+            "cj" => "5710"
+        ]);
+        $this->assertEquals($result["header"]["statut"], 200);
+        $this->assertEquals($result["header"]["message"], "OK");
+        $this->assertEquals(is_array($result["etablissements"]), true);
+        $this->assertEquals(!empty($result["etablissements"]), true);
+    }
 }
