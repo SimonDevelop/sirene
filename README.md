@@ -19,7 +19,7 @@ Sirene est une librairie php vous permettant d'utiliser l'[API Sirene](https://a
   - [x] Système de pagination
   - [x] Ordre d'affichage par champ
 
-La [documentation](https://simondevelop.github.io/sirene/) est encore en cours de rédaction.
+La [documentation](https://simondevelop.github.io/sirene/) est à votre disposition.
 
 #### Go to contribute !
 - Check the [Code of Conduct](https://github.com/SimonDevelop/sirene/blob/master/.github/CODE_OF_CONDUCT.md)
