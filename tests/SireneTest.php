@@ -91,4 +91,21 @@ class SireneTest extends TestCase
         $this->assertEquals(is_array($result["etablissements"]), true);
         $this->assertEquals(!empty($result["etablissements"]), true);
     }
+
+    /**
+     * searchEtablissement function test with pagination
+     * @depends testInitConstructor
+     */
+    public function testSearchEtablissementPagination($Sirene)
+    {
+        // City list (5 result)
+        $result = $Sirene->searchEtablissement([
+            "city" => "BORDEAUX"
+        ], "siren", 1, 5);
+        $this->assertEquals($result["header"]["statut"], 200);
+        $this->assertEquals($result["header"]["message"], "OK");
+        $this->assertEquals(is_array($result["etablissements"]), true);
+        $this->assertEquals(!empty($result["etablissements"]), true);
+        $this->assertEquals(count($result["etablissements"]), 5);
+    }
 }

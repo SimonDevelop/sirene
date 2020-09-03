@@ -9,7 +9,6 @@ Sirene est une librairie php vous permettant d'utiliser l'[API Sirene](https://a
 ## TODO
 - [x] Recherche par siren
 - [x] Recherche par siret
-- [ ] Système de pagination
 - [x] Recherche d'établissement via paramètres
   - [x] Ville
   - [x] Code Postal
@@ -17,7 +16,8 @@ Sirene est une librairie php vous permettant d'utiliser l'[API Sirene](https://a
   - [x] Sigle
   - [x] Code APE
   - [x] Catégorie Juridique
-
+  - [x] Système de pagination
+  - [x] Ordre d'affichage par champ
 
 La [documentation](https://simondevelop.github.io/sirene/) est encore en cours de rédaction.
 
