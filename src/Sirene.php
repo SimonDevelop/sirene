@@ -205,29 +205,33 @@ class Sirene
         ];
         $data = "";
         $JWT = $this->getJWTSirene();
-        if (is_string($JWT) && !empty($params)) {
-            foreach ($params as $k => $v) {
-                if (array_key_exists($k, $list)) {
-                    $data .= $list[$k].":".$v." AND ";
-                    unset($params[$k]);
+        if (is_string($JWT)) {
+            if (!empty($params)) {
+                foreach ($params as $k => $v) {
+                    if (array_key_exists($k, $list)) {
+                        $data .= $list[$k].":".$v." AND ";
+                        unset($params[$k]);
+                    }
                 }
-            }
-            $data = urlencode(substr($data, 0, -5));
-            $ch = curl_init();
-            $paramsTri = "&debut=".$page."&nombre=".$nombre."&tri=".$tri;
-            curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/?q=".$data.$paramsTri);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            $headers = [
-                "Accept: application/json",
-                "Authorization: Bearer ".$JWT
-            ];
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            $result = curl_exec($ch);
-            if (curl_errno($ch)) {
+                $data = urlencode(substr($data, 0, -5));
+                $ch = curl_init();
+                $paramsTri = "&debut=".$page."&nombre=".$nombre."&tri=".$tri;
+                curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/?q=".$data.$paramsTri);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                $headers = [
+                    "Accept: application/json",
+                    "Authorization: Bearer ".$JWT
+                ];
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                $result = curl_exec($ch);
+                if (curl_errno($ch)) {
+                    return false;
+                }
+                curl_close($ch);
+                return json_decode($result, true);
+            } else {
                 return false;
             }
-            curl_close($ch);
-            return json_decode($result, true);
         } else {
             return $JWT;
         }
