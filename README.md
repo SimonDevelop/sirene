@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/Version-0.0.2-brightgreen.svg)](https://github.com/SimonDevelop/sirene/releases/tag/0.0.2)
+[![version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)](https://github.com/SimonDevelop/sirene/releases/tag/1.0.0)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 [![Github Actions PHP](https://github.com/SimonDevelop/sirene/workflows/PHP/badge.svg)](https://github.com/SimonDevelop/sirene/actions)
 [![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/SimonDevelop/sirene/blob/master/LICENSE)
@@ -9,7 +9,6 @@ Sirene est une librairie php vous permettant d'utiliser l'[API Sirene](https://a
 ## TODO
 - [x] Recherche par siren
 - [x] Recherche par siret
-- [ ] Système de pagination
 - [x] Recherche d'établissement via paramètres
   - [x] Ville
   - [x] Code Postal
@@ -17,7 +16,8 @@ Sirene est une librairie php vous permettant d'utiliser l'[API Sirene](https://a
   - [x] Sigle
   - [x] Code APE
   - [x] Catégorie Juridique
-
+  - [x] Système de pagination
+  - [x] Ordre d'affichage par champ
 
 La [documentation](https://simondevelop.github.io/sirene/) est encore en cours de rédaction.
 

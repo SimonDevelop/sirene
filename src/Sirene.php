@@ -193,7 +193,7 @@ class Sirene
      * @param array $params Parameters of search
      * @return array|bool
      */
-    public function searchEtablissement(array $params)
+    public function searchEtablissement(array $params, string $tri = "siren", int $page = 1, int $nombre = 20)
     {
         $list = [
             "city" => "libelleCommuneEtablissement",
@@ -214,7 +214,8 @@ class Sirene
             }
             $data = urlencode(substr($data, 0, -5));
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/?q=".$data);
+            $paramsTri = "&debut=".$page."&nombre=".$nombre."&tri=".$tri;
+            curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/?q=".$data.$paramsTri);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $headers = [
                 "Accept: application/json",
