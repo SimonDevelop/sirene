@@ -26,12 +26,12 @@
     },
     "require": {
         "ext-json": "*",
-        "php": ">=7.1"
+        "php": ">=7.3"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.1",
-        "phpunit/phpunit": "^7.5.17",
-        "phpstan/phpstan": "^0.11.19"
+        "squizlabs/php_codesniffer": "4.0.x-dev",
+        "phpunit/phpunit": "^9.5.8",
+        "phpstan/phpstan": "^0.12.94"
     },
     "scripts": {
     "phpcs": "phpcs -s",
@@ -41,7 +41,7 @@
         "@phpstan-src",
         "@phpstan-tests"
     ],
-    "phpunit": "phpunit --colors",
+    "phpunit": "phpunit --colors --do-not-cache-result",
     "test": [
         "@phpunit",
         "@phpcs",
