@@ -209,7 +209,7 @@ class Sirene
             if (!empty($params)) {
                 foreach ($params as $k => $v) {
                     if (array_key_exists($k, $list)) {
-                        $data .= $list[$k].":".$v." AND ";
+                        $data .= $list[$k].":".urlencode($v)." AND ";
                         unset($params[$k]);
                     }
                 }
