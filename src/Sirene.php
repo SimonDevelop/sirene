@@ -11,8 +11,6 @@
 
 namespace SimonDevelop;
 
-use SimonDevelop\Sirene;
-
 /**
  * Class Sirene
  * Easy use of the siren API with Sirene class and ready-made functions
