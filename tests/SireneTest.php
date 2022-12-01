@@ -41,6 +41,17 @@ class SireneTest extends TestCase
     }
 
     /**
+     * Informations function test
+     * @depends testInitConstructor
+     */
+    public function testInformations($Sirene)
+    {
+        $result = $Sirene->informations();
+        $this->assertEquals(is_array($result["etatsDesServices"]), true);
+        $this->assertEquals(!empty($result["etatsDesServices"]), true);
+    }
+
+    /**
      * Siret function test
      * @depends testInitConstructor
      */

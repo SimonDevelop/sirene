@@ -134,6 +134,32 @@ class Sirene
     }
 
     /**
+     * @return array|bool
+     */
+    public function informations()
+    {
+        $JWT = $this->getJWTSirene();
+        if (is_string($JWT)) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->urlApi."/informations");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $headers = [
+                "Accept: application/json",
+                "Authorization: Bearer ".$JWT
+            ];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                return false;
+            }
+            curl_close($ch);
+            return json_decode($result, true);
+        } else {
+            return $JWT;
+        }
+    }
+
+    /**
      * @param string $siret Siret of society
      * @return array|bool
      */
