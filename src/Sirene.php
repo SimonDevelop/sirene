@@ -11,8 +11,6 @@
 
 namespace SimonDevelop;
 
-use SimonDevelop\Sirene;
-
 /**
  * Class Sirene
  * Easy use of the siren API with Sirene class and ready-made functions
@@ -132,6 +130,32 @@ class Sirene
             } else {
                 return $json["access_token"];
             }
+        }
+    }
+
+    /**
+     * @return array|bool
+     */
+    public function informations()
+    {
+        $JWT = $this->getJWTSirene();
+        if (is_string($JWT)) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->urlApi."/informations");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $headers = [
+                "Accept: application/json",
+                "Authorization: Bearer ".$JWT
+            ];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                return false;
+            }
+            curl_close($ch);
+            return json_decode($result, true);
+        } else {
+            return $JWT;
         }
     }
 
