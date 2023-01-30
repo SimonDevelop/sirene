@@ -225,7 +225,8 @@ class Sirene
             "company" => "denominationUniteLegale",
             "sigle" => "sigleUniteLegale",
             "ape" => "activitePrincipaleUniteLegale",
-            "cj" => "categorieJuridiqueUniteLegale"
+            "cj" => "categorieJuridiqueUniteLegale",
+            "siren" => "siren"
         ];
         $data = "";
         $JWT = $this->getJWTSirene();
