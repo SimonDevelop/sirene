@@ -217,7 +217,7 @@ class Sirene
      * @param array $params Parameters of search
      * @return array|bool
      */
-    public function searchEtablissement(array $params, string $tri = "siren", int $page = 1, int $nombre = 20)
+    public function searchEtablissement(array $params, string $tri = "siren", int $page = 0, int $nombre = 20)
     {
         $list = [
             "city" => "libelleCommuneEtablissement",
