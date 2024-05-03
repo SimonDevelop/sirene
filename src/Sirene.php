@@ -20,7 +20,7 @@ class Sirene
     /**
      * @var string $urlApi the url of API sirene
      */
-    private $urlApi = "https://api.insee.fr/entreprises/sirene/V3";
+    private $urlApi = "https://api.insee.fr/entreprises/sirene/V3.11";
 
     /**
      * @var string $urlJWT the url for get JWT
