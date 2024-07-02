@@ -20,7 +20,7 @@ class Sirene
     /**
      * @var string $urlApi the url of API sirene
      */
-    private $urlApi = "https://api.insee.fr/entreprises/sirene/V3";
+    private $urlApi = "https://api.insee.fr/entreprises/sirene";
 
     /**
      * @var string $urlJWT the url for get JWT
@@ -43,6 +43,9 @@ class Sirene
     public function __construct(array $settings = [])
     {
         if (!empty($settings)) {
+            if(isset($settings['url_api']) && is_string($settings['url_api'])) {
+                $this->urlApi = $settings['url_api'];
+            }
             if (isset($settings["secret"]) && is_string($settings["secret"])) {
                 $this->secretKey = $settings["secret"];
                 if (isset($settings["jwt_path"])) {
