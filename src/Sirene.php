@@ -43,7 +43,7 @@ class Sirene
     public function __construct(array $settings = [])
     {
         if (!empty($settings)) {
-            if(isset($settings['url_api']) && is_string($settings['url_api'])) {
+            if (isset($settings['url_api']) && is_string($settings['url_api'])) {
                 $this->urlApi = $settings['url_api'];
             }
             if (isset($settings["secret"]) && is_string($settings["secret"])) {
