@@ -20,15 +20,15 @@ class Sirene
     /**
      * @var string $urlApi the url of API sirene
      */
-    private $urlApi = "https://api.insee.fr/entreprises/sirene/V3.11";
+    private string $urlApi = "https://api.insee.fr/entreprises/sirene/V3.11";
 
     /**
      * @var string $apiKey the api key of your sirene application
      */
-    private $apiKey;
+    private string $apiKey;
 
     /**
-     * @param array $key api sirene key of your application
+     * @param string $key api sirene key of your application
      */
     public function __construct(string $key)
     {
@@ -38,11 +38,11 @@ class Sirene
     /**
      * @return array|bool
      */
-    public function informations()
+    public function informations(): array|bool
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->urlApi."/informations");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $headers = [
             "Accept: application/json",
             "X-INSEE-Api-Key-Integration: ".$this->apiKey
@@ -61,11 +61,11 @@ class Sirene
      * @param string $siret Siret of society
      * @return array|bool
      */
-    public function siret(string $siret)
+    public function siret(string $siret): array|bool
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/".$siret);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $headers = [
             "Accept: application/json",
             "X-INSEE-Api-Key-Integration: ".$this->apiKey
@@ -84,11 +84,11 @@ class Sirene
      * @param string $siren Siren of society
      * @return array|bool
      */
-    public function siren(string $siren)
+    public function siren(string $siren): array|bool
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siren/".$siren);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $headers = [
             "Accept: application/json",
             "X-INSEE-Api-Key-Integration: ".$this->apiKey
@@ -107,8 +107,12 @@ class Sirene
      * @param array $params Parameters of search
      * @return array|bool
      */
-    public function searchEtablissement(array $params, string $tri = "siren", int $page = 0, int $nombre = 20)
-    {
+    public function searchEtablissement(
+        array $params,
+        string $tri = "siren",
+        int $page = 0,
+        int $nombre = 20
+    ): array|bool {
         $list = [
             "city" => "libelleCommuneEtablissement",
             "cp" => "codePostalEtablissement",
@@ -132,7 +136,7 @@ class Sirene
             $ch = curl_init();
             $paramsTri = "&debut=".$page."&nombre=".$nombre."&tri=".$tri;
             curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/?q=".$data.$paramsTri);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $headers = [
                 "Accept: application/json",
                 "X-INSEE-Api-Key-Integration: ".$this->apiKey
