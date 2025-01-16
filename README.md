@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/Version-2.0.0-brightgreen.svg)](https://github.com/SimonDevelop/sirene/releases/tag/2.0.0)
+[![version](https://img.shields.io/badge/Version-2.0.1-brightgreen.svg)](https://github.com/SimonDevelop/sirene/releases/tag/2.0.1)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.1-8892BF.svg)](https://php.net/)
 [![Github Actions PHP](https://github.com/SimonDevelop/sirene/workflows/PHP/badge.svg)](https://github.com/SimonDevelop/sirene/actions)
 [![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/SimonDevelop/sirene/blob/master/LICENSE)
