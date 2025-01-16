@@ -20,7 +20,7 @@ class Sirene
     /**
      * @var string $urlApi the url of API sirene
      */
-    private string $urlApi = "https://api.insee.fr/entreprises/sirene/V3.11";
+    private string $urlApi = "https://api.insee.fr/api-sirene/3.11";
 
     /**
      * @var string $apiKey the api key of your sirene application
@@ -30,9 +30,18 @@ class Sirene
     /**
      * @param string $key api sirene key of your application
      */
-    public function __construct(string $key)
+    public function __construct(string $key, ?string $urlApi = null)
     {
         $this->apiKey = $key;
+
+        if (null !== $urlApi) {
+            $this->urlApi = $urlApi;
+        }
+    }
+
+    public function setApiUrl(string $url): void
+    {
+        $this->urlApi = $url;
     }
 
     /**
