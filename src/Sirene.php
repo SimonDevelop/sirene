@@ -63,7 +63,7 @@ class Sirene
         }
         curl_close($ch);
 
-        return json_decode($result, true);
+        return is_null(json_decode($result, true)) ? false : json_decode($result, true);
     }
 
     /**
@@ -86,7 +86,7 @@ class Sirene
         }
         curl_close($ch);
 
-        return json_decode($result, true);
+        return is_null(json_decode($result, true)) ? false : json_decode($result, true);
     }
 
     /**
@@ -109,7 +109,7 @@ class Sirene
         }
         curl_close($ch);
         
-        return json_decode($result, true);
+        return is_null(json_decode($result, true)) ? false : json_decode($result, true);
     }
 
     /**
@@ -157,7 +157,7 @@ class Sirene
             }
             curl_close($ch);
 
-            return json_decode($result, true);
+            return is_null(json_decode($result, true)) ? false : json_decode($result, true);
         } else {
             return false;
         }
