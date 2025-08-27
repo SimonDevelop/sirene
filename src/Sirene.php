@@ -137,11 +137,15 @@ class Sirene
         if (!empty($params)) {
             foreach ($params as $k => $v) {
                 if (array_key_exists($k, $list)) {
-                    $data .= $list[$k].":".urlencode($v)." AND ";
+                    if ($k === 'company' || $k === 'city') {
+                        $data .= $list[$k].":\"".rawurlencode($v)."\" AND ";
+                    } else {
+                        $data .= $list[$k].":".rawurlencode($v)." AND ";
+                    }
                     unset($params[$k]);
                 }
             }
-            $data = urlencode(substr($data, 0, -5));
+            $data = rawurlencode(substr($data, 0, -5));
             $ch = curl_init();
             $paramsTri = "&debut=".$page."&nombre=".$nombre."&tri=".$tri;
             curl_setopt($ch, CURLOPT_URL, $this->urlApi."/siret/?q=".$data.$paramsTri);
