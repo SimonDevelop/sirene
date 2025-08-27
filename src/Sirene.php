@@ -126,6 +126,7 @@ class Sirene
             "city" => "libelleCommuneEtablissement",
             "cp" => "codePostalEtablissement",
             "cc" => "codeCommuneEtablissement",
+            "cue" => "denominationUsuelleEtablissement",
             "company" => "denominationUniteLegale",
             "sigle" => "sigleUniteLegale",
             "ape" => "activitePrincipaleUniteLegale",
@@ -139,6 +140,8 @@ class Sirene
                 if (array_key_exists($k, $list)) {
                     if ($k === 'company' || $k === 'city') {
                         $data .= $list[$k].":\"".rawurlencode($v)."\" AND ";
+                    } else if ($k === 'cue') {
+                        $data = "periode(".$data.$list[$k].":\"".rawurlencode($v).")\" AND ";
                     } else {
                         $data .= $list[$k].":".rawurlencode($v)." AND ";
                     }
