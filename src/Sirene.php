@@ -138,12 +138,16 @@ class Sirene
         if (!empty($params)) {
             foreach ($params as $k => $v) {
                 if (array_key_exists($k, $list)) {
-                    if ($k === 'company' || $k === 'city') {
-                        $data .= $list[$k].":\"".rawurlencode($v)."\" AND ";
-                    } else if ($k === 'cue') {
-                        $data = "periode(".$data.$list[$k].":\"".rawurlencode($v).")\" AND ";
-                    } else {
-                        $data .= $list[$k].":".rawurlencode($v)." AND ";
+                    switch ($k) {
+                        case 'company':
+                        case 'city':
+                            $data .= $list[$k].":\"".rawurlencode($v)."\" AND ";
+                            break;
+                        case 'cue':
+                            $data = $data."periode(".$data.$list[$k].":\"".rawurlencode($v)."\") AND ";
+                            break;
+                        default:
+                            $data .= $list[$k].":".rawurlencode($v)." AND ";
                     }
                     unset($params[$k]);
                 }
